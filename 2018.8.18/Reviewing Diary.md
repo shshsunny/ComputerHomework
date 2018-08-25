@@ -4,6 +4,7 @@
 - 自底向上
 - 时间／空间复杂度降维（优化）
 
+**重写原Python程序的C++代码[在这里](https://github.com/shshsunny/ComputerHomework/tree/master/2018.8.18/Cpp%20rewrites)**
 ## 01：状态转移方程
 动态规划都要考虑到**状态转移方程**，也就是将问题分解成一个或者多个子问题的规则。状态转移方程不一定只有一条。
 
@@ -38,6 +39,7 @@ def f(C, i):
 ```
 
 或者换成另一种结构，如下：
+
 ```py
 def f(C, i):
     if i > 0:
@@ -119,7 +121,6 @@ Bottom-up式的完整代码：
 solve = [[0 for j in range(I + 1)] for i in range(C + 1)]# 初始化数组
 for c in range(C + 1):
     for i in range(1, I + 1):
-        print(w[i], c)
         solve[c][i] = max(solve[c][i - 1], solve[c - w[i]][i - 1] + v[i]) if w[i] <= c else solve[c][i - 1]
 print(solve[-1][-1])
 ```
